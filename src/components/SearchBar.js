@@ -4,7 +4,7 @@ import {View, TextInput, StyleSheet, Text} from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 
 
-const SearchBar = ({term, onTermChange}) => {
+const SearchBar = ({term, onTermChange, onTermSubmit}) => {
     return (
         <View style={styles.container}>
             <Ionicons name="search" size={30} style={styles.icon} />
@@ -12,9 +12,10 @@ const SearchBar = ({term, onTermChange}) => {
                 placeholder="Search" 
                 style={styles.input} 
                 value={term} 
-                onChangeText={newTerm => onTermChange(newTerm)}
+                onChangeText={onTermChange}
                 autoCorrect={false} 
-                autoCapitalize="none" />
+                autoCapitalize="none"
+                onEndEditing={onTermSubmit} />
         </View>
     );
 };
